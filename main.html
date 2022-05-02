@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="main.css">
+<canvas id = "screen"></canvas>
+<canvas id = "screen2"></canvas>
+<div id = "dice">
+    <div id = "turn">Red's turn</div>
+    <div><button onclick="roll()">Roll</button></div>
+</div>
+<div id="Game_end">
+</div>
+<div id = "log">
+</div>
+<table>
+    <tr style="color: black;">
+        <th>Player</th>
+        <th>Position</th>
+    </tr>
+    <tr id = "Red_cont" style="background-color: red;color:white">
+        <td>Red</td>
+        <td id="Red">0</td>
+    </tr>
+    <tr  id = "Green_cont" style="color:green">
+        <td>Green</td>
+        <td id="Green">0</td>
+    </tr >
+    <tr  id = "Blue_cont"  style="color:blue">
+        <td>Blue</td>
+        <td  id="Blue">0</td>
+    </tr>
+    <tr id = "Brown_cont"  style="color:brown">
+        <td>Brown</td>
+        <td  id="Brown">0</td>
+    </tr>
+</table>
+<script>
+    var canvas = document.getElementById("screen");
+    var ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    
+    var canvas2 = document.getElementById("screen2");
+    var ctx2 = canvas2.getContext("2d");
+    canvas2.height = window.innerHeight;
+    canvas2.width = window.innerWidth;
+    
+    ctx.strokeStyle = 'black';
+    ctx.textAlign = "center";  
+    ctx.font = "20px Arial";
+</script>
+<script src="main.js"></script>

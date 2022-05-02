@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#dice{
+    position: fixed;
+    bottom: 5vh;
+    right: 55vh;
+    height: 24vh;
+    width: 30vh;
+    background-color: red;
+}
+#dice > div{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    color: white;
+}
+#dice  button{
+    height: 6vh;
+    width: 12vh;
+    cursor: pointer;
+}
+canvas{
+    position: fixed;
+    top: 0;
+}
+#sceen{
+    z-index: -1;
+}
+table{
+    position: fixed;
+    bottom: 5vh;
+    right: 5vh;
+    font-size: large;
+    width: 30vh;
+    height: 30vh;
+    border-collapse: collapse;
+    text-align: center;
+}
+#log{
+    position: fixed;
+    top: 5vh;
+    right: 5vh;
+    height: 30vh;
+    width: 90vh;
+    font-size: large;
+
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+}
+#log > p{
+    display: block;
+    height: 25%;
+}
+#log > p:last-child {
+    scroll-snap-align: start;
+}
+#game_end{
+    position: fixed;
+    top: 35vh;
+    right: 5vh;
+    width: 90vh;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    color: white;
+}
