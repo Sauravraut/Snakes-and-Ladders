@@ -1,5 +1,6 @@
 # Snakes-and-Ladders
 Snakes and Ladders with HTML, Js, CSS
+working canvas api to draw
 
 # TO-DO
 - Start Screen
