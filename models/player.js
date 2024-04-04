@@ -1,17 +1,21 @@
 import { drawCircle } from "../canvas.js";
 export default class Player {
-  constructor(color, size) {
-    this.id = color;
-    this.name = color;
+  constructor(name, color, size) {
+    this.name = name;
     this.color = color;
+    this.size = size;
     this.pos = 0;
     this.modifiers = [];
-    this.size = size;
+    this.diceMin = 1;
+    this.diceMax = 6;
     this.visualOffset = 0.5;
     this.sizeMagnifier = 0.35;
     this.scoreDiv;
     this.scoreRow;
-    this.rollHistory = [];
+    this.history = {
+      roll: [],
+      pos: [this.pos],
+    };
     this.createScoreBox();
   }
   get player_x() {
@@ -39,11 +43,13 @@ export default class Player {
       this.color
     );
   }
-  rollDice(min = 1, max = 6) {
-    const result = Math.floor(Math.random() * (max - 1)) + min;
+  rollDice() {
+    const result =
+      Math.floor(Math.random() * (this.diceMax - 1)) + this.diceMin;
     this.pos += result;
 
-    this.rollHistory.push(result);
+    this.history.roll.push(result);
+    this.history.pos.push(this.pos);
   }
   updateScore() {
     this.scoreDiv.innerText = this.pos;
@@ -59,7 +65,7 @@ export default class Player {
   createScoreBox() {
     const table = document.getElementById("scoreTable");
     const nameCont = document.createElement("td");
-    nameCont.innerText = this.color;
+    nameCont.innerText = this.name;
 
     this.scoreDiv = document.createElement("td");
     this.scoreDiv.innerText = this.pos;

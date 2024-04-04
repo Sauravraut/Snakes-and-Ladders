@@ -5,7 +5,7 @@ import { clearView } from "../canvas.js";
 import TurnKeeper from "./turnKeeper.js";
 
 export default class GameManager {
-  constructor(boardView, playerView, colors) {
+  constructor(boardView, playerView, players) {
     this.playerView = playerView;
     this.running = true;
 
@@ -13,8 +13,8 @@ export default class GameManager {
     this.turnKeeper = new TurnKeeper();
     this.board = new Board(boardView);
 
-    this.players = colors.map(
-      (color) => new Player(color, this.board.tileSize)
+    this.players = players.map(
+      (player) => new Player(player.name, player.color, this.board.tileSize)
     );
     this.currentPlayerIndex = 0;
   }
@@ -28,7 +28,10 @@ export default class GameManager {
     this.currentPlayer.highlightScore();
     this.updatePlayerView();
   }
-  ondiceRoll() {
+  diceRoll() {
+    if (!this.running) {
+      return;
+    }
     let start = this.currentPlayer.pos;
     this.currentPlayer.rollDice();
     this.logger.onPlayerMove(this.currentPlayer, start);
@@ -56,6 +59,7 @@ export default class GameManager {
       // TODO update to use set map
       const index = this.board.snakes_H.indexOf(start);
       this.currentPlayer.pos = this.board.snakes_T[index];
+      this.currentPlayer.history.pos.push(this.currentPlayer.pos);
       this.logger.onSnakeEat(this.currentPlayer, start);
     }
   }
@@ -65,6 +69,7 @@ export default class GameManager {
       // TODO update to use set map
       const index = this.board.ladders_S.indexOf(start);
       this.currentPlayer.pos = this.board.ladders_E[index];
+      this.currentPlayer.history.pos.push(this.currentPlayer.pos);
       this.logger.onLadderClimb(this.currentPlayer, start);
     }
   }
@@ -72,7 +77,7 @@ export default class GameManager {
     if (this.currentPlayer.pos >= 100) {
       this.currentPlayer.pos = 100;
       this.logger.onGameWin(this.currentPlayer);
-      console.log(this.currentPlayer.rollHistory);
+      console.log(this.currentPlayer.history);
       this.running = false;
     }
   }
