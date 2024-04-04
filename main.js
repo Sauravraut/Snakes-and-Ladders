@@ -1,5 +1,5 @@
 import GameManager from "./models/gameManager.js";
-import { boardView, playerView } from "./canvas.js";
+import { boardView, playerView } from "./models/canvas.js";
 
 const diceRollBtn = document.getElementById("diceRollBtn");
 const resetBtn = document.getElementById("resetBtn");

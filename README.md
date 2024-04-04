@@ -1,6 +1,6 @@
 # Snakes-and-Ladders
 
-Snakes and Ladders with HTML, Js, CSS
+Snakes and Ladders with HTML, JS, CSS
 using 2D canvas.js api to draw
 
 # TO-DO
