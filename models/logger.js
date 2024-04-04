@@ -50,11 +50,4 @@ export default class Logger {
     p.innerHTML = text;
     this.div.appendChild(p);
   }
-  onGameWin(player) {
-    const p = document.createElement("p");
-    p.innerHTML += player.name + " Victory! ";
-    document.getElementById("gameEndCont").style.display = "flex";
-    document.getElementById("game_end").style.backgroundColor = player.color;
-    document.getElementById("game_end").append(p);
-  }
 }

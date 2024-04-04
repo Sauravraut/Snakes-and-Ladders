@@ -76,7 +76,7 @@ export default class GameManager {
   checkGameWin() {
     if (this.currentPlayer.pos >= 100) {
       this.currentPlayer.pos = 100;
-      this.logger.onGameWin(this.currentPlayer);
+      this.onGameWin(this.currentPlayer);
       console.log(this.currentPlayer.history);
       this.running = false;
     }
@@ -84,5 +84,12 @@ export default class GameManager {
   newGame() {
     location.reload();
     return false;
+  }
+  onGameWin(player) {
+    const p = document.createElement("p");
+    p.innerHTML += player.name + " Victory! ";
+    document.getElementById("gameEndCont").style.display = "flex";
+    document.getElementById("game_end").style.backgroundColor = player.color;
+    document.getElementById("game_end").append(p);
   }
 }
