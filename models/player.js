@@ -1,5 +1,5 @@
 import { drawCircle } from "./canvas.js";
-
+import { LuckyDice } from "./modifiers/modifier.js";
 /**
  * Holds player data and interactions
  */
@@ -15,7 +15,7 @@ export default class Player {
     this.color = color;
     this.size = size;
     this.pos = 0;
-    this.modifiers = [];
+    this.modifiers = [new LuckyDice()];
     this.diceMin = 1;
     this.diceMax = 6;
     this.visualOffset = 0.5;
@@ -66,6 +66,7 @@ export default class Player {
    * Rolls a random number between diceMax and diceMin inclusive. Also records all rolls and positions
    */
   rollDice() {
+    // for loop thoiugh all powerups
     const result =
       Math.floor(Math.random() * (this.diceMax - 1)) + this.diceMin;
     this.pos += result;

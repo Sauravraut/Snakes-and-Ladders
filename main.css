@@ -73,7 +73,7 @@ table {
 
 #game_end {
   z-index: 1;
-  padding: 200px;
+  padding: 50px;
   display: flex;
   justify-content: center;
   align-items: center;

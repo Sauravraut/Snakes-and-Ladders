@@ -3,6 +3,7 @@ import Player from "./player.js";
 import Logger from "./logger.js";
 import { clearView } from "./canvas.js";
 import TurnKeeper from "./turnKeeper.js";
+import createPositionGraph from "./statistics/d3.js";
 /**
  * Manages Game on large scale
  */
@@ -108,7 +109,7 @@ export default class GameManager {
    * Checks if the current player has won the game
    */
   checkGameWin() {
-    if (this.currentPlayer.pos >= 100) {
+    if (this.currentPlayer.pos >= 50) {
       this.currentPlayer.pos = 100;
       this.onGameWin(this.currentPlayer);
       console.log(this.currentPlayer.history);
@@ -126,10 +127,17 @@ export default class GameManager {
    * shows a popup when a player wins the game
    */
   onGameWin(player) {
+    this.notifyGameWin(player);
+    createPositionGraph(this.players);
+  }
+  notifyGameWin(player) {
     const p = document.createElement("p");
     p.innerHTML += player.name + " Victory! ";
     document.getElementById("gameEndCont").style.display = "flex";
-    document.getElementById("game_end").style.backgroundColor = player.color;
+    document.getElementById("game_end").style.color = player.color;
+
+    document.getElementById("game_end").style.backgroundColor = "white";
     document.getElementById("game_end").append(p);
   }
+  executeTurn() {}
 }
