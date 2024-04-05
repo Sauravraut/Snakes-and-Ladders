@@ -109,7 +109,7 @@ export default class GameManager {
    * Checks if the current player has won the game
    */
   checkGameWin() {
-    if (this.currentPlayer.pos >= 50) {
+    if (this.currentPlayer.pos >= 100) {
       this.currentPlayer.pos = 100;
       this.onGameWin(this.currentPlayer);
       console.log(this.currentPlayer.history);
